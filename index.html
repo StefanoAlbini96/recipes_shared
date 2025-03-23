@@ -9,4 +9,34 @@
     <h1>Welcome to My Awesome Site!</h1>
     <p>This is a simple GitHub Project Page.</p>
 </body>
+
+    
+<form id="submission-form">
+  <input type="text" id="inputString" placeholder="Enter a string" required />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const form = document.getElementById('submission-form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const inputString = document.getElementById('inputString').value;
+
+    try {
+      const response = await fetch('YOUR_GOOGLE_WEB_APP_URL', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ inputString })
+      });
+      alert('Submission Successful!');
+    } catch (error) {
+      alert('Failed to submit.');
+      console.error('Error:', error);
+    }
+  });
+</script>
+
+
+    
 </html>
